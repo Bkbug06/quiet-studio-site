@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Work | Quiet Studio: Websites for Roofers, Landscapers & Local Businesses</title>
+<title>Our Work | Quiet Studio: Websites for Roofers, Landscapers & Churches</title>
 <meta name="description" content="Live websites built by Quiet Studio for roofing companies, landscaping and hardscape contractors, and churches across the US.">
 <link rel="canonical" href="https://aldrin-portfolio-home.vercel.app/portfolio.html">
 <meta name="theme-color" content="#0F1B17">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Quiet Studio">
 <meta property="og:title" content="Our Work | Quiet Studio">
-<meta property="og:description" content="Live websites for roofers, landscapers and local businesses across the US.">
+<meta property="og:description" content="Live websites for roofers, landscapers and churches across the US.">
 <meta property="og:url" content="https://aldrin-portfolio-home.vercel.app/portfolio.html">
+<meta property="og:image" content="https://aldrin-portfolio-home.vercel.app/site-holden.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F3A2F'/%3E%3Cpath d='M16 26V12' stroke='%23F5B83D' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M16 13c0-4 2.5-6.5 6-7-0.3 4-2.6 6.6-6 7z' fill='%23F5B83D'/%3E%3Cpath d='M16 19c-1-3.4-3.6-5.2-7-5 0.8 3.4 3.5 5.2 7 5z' fill='%23F5B83D'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://s0.wp.com">
 <link rel="preload" as="image" href="quiet-studio-logo-white.png">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
 
@@ -32,29 +32,35 @@ body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--font);f
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 p{margin:0}
-h1,h2,h3{margin:0;font-family:var(--font);font-stretch:75%;font-weight:780;line-height:1.02;letter-spacing:-.012em}
+h1,h2,h3{margin:0;font-family:var(--font);font-stretch:75%;font-weight:780;line-height:1.02;letter-spacing:-.012em;text-wrap:balance}
+p,li{text-wrap:pretty}
+::selection{background:#F5B83D;color:#14211C}
 h1{font-size:clamp(2.8rem,6.4vw,5.4rem)}
 h2{font-size:clamp(2rem,4vw,3.2rem)}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
 .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--amber);color:var(--ink);padding:10px 14px;border-radius:8px;font-weight:700}
 .skip:focus{left:8px}
 :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+section[id]{scroll-margin-top:100px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:700;font-size:1rem;text-decoration:none;padding:15px 24px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;font:inherit;font-weight:700;font-size:1rem;text-decoration:none;padding:15px 24px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
 .btn-amber{background:var(--amber);color:var(--ink)}
 .btn-amber:hover{background:var(--amber-hi)}
 .btn-line-light{border-color:rgba(234,240,236,.45);color:var(--on-dark)}
 .btn-line-light:hover{border-color:var(--on-dark);background:rgba(234,240,236,.08)}
 
-.site-header{position:sticky;top:0;z-index:100;background:rgba(15,27,23,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(234,240,236,.08);color:var(--on-dark)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(15,27,23,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(234,240,236,.08);color:var(--on-dark);transition:box-shadow .25s ease}
+.site-header.scrolled{box-shadow:0 12px 32px -20px rgba(0,0,0,.45)}
 .header-row{display:flex;align-items:center;justify-content:space-between;height:84px;gap:20px}
 .brand{display:flex;align-items:center;text-decoration:none;font-weight:780;font-stretch:80%;font-size:1.35rem;color:var(--white)}
 .brand img{height:60px;width:auto}
 .main-nav{display:flex;align-items:center;gap:30px}
 .main-nav a{text-decoration:none;font-weight:560;font-size:.97rem;color:var(--on-dark-muted)}
+.main-nav a:not(.btn){position:relative}
 .main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--on-dark)}
+.main-nav a[aria-current="page"]:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--amber)}
 .main-nav .btn{color:var(--ink);padding:11px 20px;font-size:.95rem}
-.nav-toggle{display:none;font:inherit;font-weight:700;background:none;color:var(--on-dark);border:2px solid rgba(234,240,236,.4);border-radius:999px;padding:8px 16px;cursor:pointer}
+.nav-toggle{display:none;font:inherit;font-weight:700;background:none;color:var(--on-dark);border:2px solid rgba(234,240,236,.4);border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px}
 
 .intro{background:var(--night);color:var(--on-dark);padding:80px 0 0;position:relative;overflow:hidden}
 .intro::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 85% 0%,rgba(62,107,85,.45),transparent 65%);pointer-events:none}
@@ -65,13 +71,13 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 .counts b{display:block;font-stretch:72%;font-weight:800;font-size:2.6rem;line-height:1;color:var(--amber)}
 .counts span{font-size:.92rem;color:var(--on-dark-muted)}
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-top:52px;padding:22px 0;border-top:1px solid rgba(234,240,236,.1)}
-.filters button{font:inherit;font-weight:650;font-size:.95rem;padding:10px 18px;border-radius:999px;border:1.5px solid rgba(234,240,236,.25);background:transparent;color:var(--on-dark);cursor:pointer}
+.filters button{font:inherit;font-weight:650;font-size:.95rem;min-height:44px;padding:10px 18px;border-radius:999px;border:1.5px solid rgba(234,240,236,.25);background:transparent;color:var(--on-dark);cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
 .filters button:hover{border-color:var(--on-dark)}
 .filters button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ink)}
 .filters .n{opacity:.65;margin-left:4px;font-weight:500}
 
 .projects{padding:56px 0 104px}
-.group-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:56px 0 24px}
+.group-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:64px 0 24px}
 .group-title:first-child{margin-top:0}
 .group-title[hidden],.grid[hidden]{display:none}
 .group-title h2{font-size:clamp(1.7rem,3vw,2.4rem)}
@@ -83,18 +89,20 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 .shot-bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-bottom:1px solid #D7DED9}
 .shot-bar i{width:9px;height:9px;border-radius:50%;background:#C3CCC6}
 .shot-bar em{margin-left:8px;flex:1;height:18px;border-radius:5px;background:#fff;font-style:normal;font-size:10.5px;color:#7A867F;display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap}
-.shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;background:linear-gradient(135deg,#DCE6DF,#C4D2C9)}
+.shot-img{aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#DCE6DF,#C4D2C9)}
+.shot-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s ease}
+.card:hover .shot-img img{transform:scale(1.03)}
 .shot-blank{aspect-ratio:16/10;display:grid;place-items:center;background:linear-gradient(150deg,var(--moss),var(--forest));color:var(--amber);font-stretch:70%;font-weight:800;font-size:3.6rem;letter-spacing:-.02em}
 .live{position:absolute;top:42px;right:12px;display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--forest);font-size:.78rem;font-weight:720;padding:4px 10px;border-radius:999px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .live::before{content:"";width:7px;height:7px;border-radius:50%;background:#2E9E5B}
 .card-body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .card-type{font-size:.86rem;font-weight:650;color:var(--moss)}
-.card h3{font-size:1.55rem;line-height:1.08}
+.card h3{font-size:1.5rem;line-height:1.08}
 .card .where{color:var(--muted);font-size:.93rem}
 .card .desc{font-size:.97rem}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
 .tag{font-size:.78rem;font-weight:650;padding:4px 10px;border-radius:999px;background:var(--sage);color:var(--forest)}
-.visit{margin-top:auto;padding-top:14px;display:inline-flex;align-items:center;gap:8px;font-weight:720;text-decoration:none;color:var(--ink)}
+.visit{margin-top:auto;padding-top:14px;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:720;text-decoration:none;color:var(--ink)}
 .visit svg{width:18px;height:18px;transition:transform .15s}
 .visit:hover{text-decoration:underline;text-underline-offset:4px}
 .visit:hover svg{transform:translate(2px,-2px)}
@@ -115,7 +123,6 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 .footer-row a{text-decoration:none}
 .footer-row a:hover{color:var(--on-dark);text-decoration:underline}
 
-/* Loading screen */
 .loader{position:fixed;inset:0;z-index:999;background:var(--night);display:grid;place-items:center;cursor:pointer;transition:opacity .6s ease,visibility .6s ease}
 .loader::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 50% 40%,rgba(62,107,85,.45),transparent 70%);pointer-events:none}
 .loader.done{opacity:0;visibility:hidden}
@@ -139,8 +146,11 @@ html.loading{overflow:hidden}
   body{font-size:16px}
   .header-row{height:72px}
   .brand img{height:48px}
-  .main-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--night);flex-direction:column;align-items:flex-start;gap:20px;padding:22px 24px 30px;border-bottom:1px solid rgba(234,240,236,.1)}
+  .main-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--night);flex-direction:column;align-items:flex-start;gap:12px;padding:20px 24px 28px;border-bottom:1px solid rgba(234,240,236,.1)}
   .main-nav.open{display:flex}
+  .main-nav a:not(.btn){display:block;width:100%;padding:10px 0;font-size:1.05rem}
+  .main-nav a[aria-current="page"]:not(.btn)::after{bottom:4px;right:auto;width:28px}
+  .main-nav .btn{width:100%}
   .nav-toggle{display:inline-block}
   .intro{padding-top:52px}
   .grid{grid-template-columns:1fr}
@@ -152,7 +162,6 @@ html.loading{overflow:hidden}
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-inner">
     <img class="loader-logo" src="quiet-studio-logo-white.png" alt="" width="1170" height="460" onerror="this.style.display='none';this.nextElementSibling.hidden=false">
@@ -163,8 +172,8 @@ html.loading{overflow:hidden}
 </div>
 <script>
 (function(){
-  var DURATION = 3000;          // loading time in milliseconds (3000 = 3 seconds)
-  var SHOW_EVERY_PAGE = false;  // true = show on every page load, false = once per visit
+  var DURATION = 3000;
+  var SHOW_EVERY_PAGE = false;
   var loader = document.getElementById('loader');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var seen = false;
@@ -212,11 +221,11 @@ html.loading{overflow:hidden}
 <section class="intro" aria-labelledby="page-title">
   <div class="wrap">
     <h1 id="page-title">Real websites, working for real businesses.</h1>
-    <p class="intro-sub">Every site here was designed and built for a real company. Most are live, so open them on your phone and see for yourself how easy they make it to call.</p>
+    <p class="intro-sub">Every site here was designed and built for a real organization across the US. Open the live ones on your phone and see how easy they make it to call, visit or give.</p>
     <div class="counts">
       <div><b>50+</b><span>projects delivered</span></div>
       <div><b>4+</b><span>years building websites</span></div>
-      <div><b id="shown-count">12</b><span>featured on this page</span></div>
+      <div><b id="shown-count">17</b><span>featured on this page</span></div>
     </div>
     <div class="filters" role="group" aria-label="Filter projects by industry">
       <button type="button" data-filter="all" aria-pressed="true">All<span class="n" data-count="all"></span></button>
@@ -232,11 +241,10 @@ html.loading{overflow:hidden}
 
     <div class="group-title"><h2>Roofing and contractors</h2><span>Built to turn searches into inspection requests</span></div>
     <div class="grid">
-
       <article class="card" data-category="roofing">
         <div class="shot">
           <div class="shot-bar"><i></i><i></i><i></i><em>holdenroofing.com/locations/austin</em></div>
-          <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fholdenroofing.com%2Flocations%2Faustin%2F?w=900&h=563" width="900" height="563" alt="Holden Roofing Austin location page" loading="lazy">
+          <div class="shot-img"><img src="site-holden.png" width="1200" height="750" alt="Holden Roofing Austin location page" loading="lazy" onerror="this.style.visibility='hidden'"></div>
           <span class="live">Live</span>
         </div>
         <div class="card-body">
@@ -251,8 +259,24 @@ html.loading{overflow:hidden}
 
       <article class="card" data-category="roofing">
         <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>wisebuildersrnr.com</em></div>
+          <div class="shot-img"><img src="site-wise-builders.png" width="1200" height="750" alt="Wise Builders Roofing and Renovations homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+          <span class="live">Live</span>
+        </div>
+        <div class="card-body">
+          <p class="card-type">Lead generation website</p>
+          <h3>Wise Builders</h3>
+          <p class="where">Mobile, Alabama</p>
+          <p class="desc">A roofing and renovation site with a consultation form in the first screen, trust stats, a sticky call button and a section system the team uses to add pages.</p>
+          <div class="tags"><span class="tag">Elementor Pro</span><span class="tag">Custom HTML/CSS</span></div>
+          <a class="visit" href="https://wisebuildersrnr.com/" target="_blank" rel="noopener">Visit live site<svg aria-hidden="true"><use href="#out"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card" data-category="roofing">
+        <div class="shot">
           <div class="shot-bar"><i></i><i></i><i></i><em>trueworksroofing.com</em></div>
-          <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Ftrueworksroofing.com%2F?w=900&h=563" width="900" height="563" alt="TrueWorks Roofing homepage" loading="lazy">
+          <div class="shot-img"><img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Ftrueworksroofing.com%2F?w=1200&h=750" width="1200" height="750" alt="TrueWorks Roofing homepage" loading="lazy"></div>
           <span class="live">Live</span>
         </div>
         <div class="card-body">
@@ -264,63 +288,67 @@ html.loading{overflow:hidden}
           <a class="visit" href="https://trueworksroofing.com/" target="_blank" rel="noopener">Visit live site<svg aria-hidden="true"><use href="#out"/></svg></a>
         </div>
       </article>
-
-      <article class="card" data-category="roofing">
-        <div class="shot">
-          <div class="shot-bar"><i></i><i></i><i></i><em>wisebuildersrnr.com</em></div>
-          <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwisebuildersrnr.com%2F?w=900&h=563" width="900" height="563" alt="Wise Builders Roofing and Renovations homepage" loading="lazy">
-          <span class="live">Live</span>
-        </div>
-        <div class="card-body">
-          <p class="card-type">Lead generation website</p>
-          <h3>Wise Builders</h3>
-          <p class="where">Mobile, Alabama</p>
-          <p class="desc">A roofing and renovation site with a sticky call button, storm restoration pages and a section system the team uses to add pages.</p>
-          <div class="tags"><span class="tag">Elementor Pro</span><span class="tag">Custom HTML/CSS</span></div>
-          <a class="visit" href="https://wisebuildersrnr.com/" target="_blank" rel="noopener">Visit live site<svg aria-hidden="true"><use href="#out"/></svg></a>
-        </div>
-      </article>
-
     </div>
 
     <div class="group-title"><h2>Landscaping and hardscape</h2><span>Built to sell by the estimate</span></div>
     <div class="grid">
+      <article class="card" data-category="landscaping">
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>brothersoutdoorservices.com</em></div>
+          <div class="shot-img"><img src="site-brothers-outdoor.png" width="1200" height="750" alt="Brothers Outdoor Services homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+          <span class="live">Live</span>
+        </div>
+        <div class="card-body">
+          <p class="card-type">Full website</p>
+          <h3>Brothers Outdoor Services</h3>
+          <p class="where">Brookfield, Newtown and Bridgewater, Connecticut</p>
+          <p class="desc">A warm, photo-led site for high-end outdoor living work, with the phone number in the header and a quote button in the first screen.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Avada</span></div>
+          <a class="visit" href="https://brothersoutdoorservices.com/" target="_blank" rel="noopener">Visit live site<svg aria-hidden="true"><use href="#out"/></svg></a>
+        </div>
+      </article>
 
       <article class="card" data-category="landscaping">
         <div class="shot">
           <div class="shot-bar"><i></i><i></i><i></i><em>allaroundtampa.com</em></div>
-          <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fallaroundtampa.com%2F?w=900&h=563" width="900" height="563" alt="All Around Tampa Paver Services homepage" loading="lazy">
+          <div class="shot-img"><img src="site-all-around-tampa.png" width="1200" height="750" alt="All Around Tampa Paver Services homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
           <span class="live">Live</span>
         </div>
         <div class="card-body">
           <p class="card-type">Service business website</p>
           <h3>All Around Tampa Paver Services</h3>
           <p class="where">Pinellas County, Florida</p>
-          <p class="desc">Phone number, quote button and service areas in the first screen, with pages for each Pinellas County city they serve.</p>
+          <p class="desc">Phone number, quote button and service areas in the first screen, with pages for each city they serve.</p>
           <div class="tags"><span class="tag">WordPress</span><span class="tag">Avada</span><span class="tag">Local SEO</span></div>
           <a class="visit" href="https://allaroundtampa.com/" target="_blank" rel="noopener">Visit live site<svg aria-hidden="true"><use href="#out"/></svg></a>
         </div>
       </article>
 
       <article class="card" data-category="landscaping">
-        <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><em>Connecticut landscaping</em></div><div class="shot-blank" aria-hidden="true">CT</div></div>
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>Precision Landscape Management</em></div>
+          <div class="shot-img"><img src="site-precision.png" width="1200" height="750" alt="Precision Landscape Management turf care page" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
         <div class="card-body">
-          <p class="card-type">Full website</p>
-          <h3>Premium landscaping company</h3>
-          <p class="where">Brookfield, Newtown and Bridgewater, Connecticut</p>
-          <p class="desc">A warm, photo-led site for high-end outdoor living work, with the phone number in the header and services right below the hero.</p>
-          <div class="tags"><span class="tag">WordPress</span><span class="tag">Avada</span></div>
+          <p class="card-type">Service website</p>
+          <h3>Precision Landscape Management</h3>
+          <p class="where">Turf care and landscape management</p>
+          <p class="desc">Service pages with an inquiry form placed right beside the content, so homeowners can ask while they read.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Forms</span></div>
         </div>
       </article>
 
       <article class="card" data-category="landscaping">
-        <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><em>Logan's Landscaping</em></div><div class="shot-blank" aria-hidden="true">LL</div></div>
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>Logan's Landscaping</em></div>
+          <div class="shot-img"><img src="site-logans.png" width="1200" height="750" alt="Logan's Landscaping homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
         <div class="card-body">
           <p class="card-type">Full website</p>
           <h3>Logan's Landscaping</h3>
-          <p class="where">Landscaping and hardscape services</p>
-          <p class="desc">A clean, minimal site launched fast, with one clear action repeated through the page: get a quote.</p>
-          <div class="tags"><span class="tag">WordPress</span><span class="tag">Avada</span></div>
+          <p class="where">Walkways, patios and retaining walls</p>
+          <p class="desc">A clean, minimal site launched fast, with one clear action repeated through the page: get in touch.</p>
+          <div class="tags"><span class="tag">Website design</span></div>
         </div>
       </article>
 
@@ -334,34 +362,21 @@ html.loading{overflow:hidden}
           <div class="tags"><span class="tag">WordPress</span><span class="tag">Avada</span></div>
         </div>
       </article>
-
-      <article class="card" data-category="landscaping">
-        <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><em>Precision turf care</em></div><div class="shot-blank" aria-hidden="true">PT</div></div>
-        <div class="card-body">
-          <p class="card-type">Service website</p>
-          <h3>Precision turf care and landscaping</h3>
-          <p class="where">Lawn care and landscape management</p>
-          <p class="desc">Service pages with an inquiry form placed right beside the content, so homeowners can ask while they read.</p>
-          <div class="tags"><span class="tag">WordPress</span><span class="tag">Avada</span></div>
-        </div>
-      </article>
-
     </div>
 
     <div class="group-title"><h2>Churches</h2><span>Built around plan-your-visit, watch online and give</span></div>
     <div class="grid">
-
       <article class="card" data-category="church">
         <div class="shot">
           <div class="shot-bar"><i></i><i></i><i></i><em>wordchurchla.com</em></div>
-          <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwordchurchla.com%2F?w=900&h=563" width="900" height="563" alt="The Word Church LA homepage" loading="lazy">
+          <div class="shot-img"><img src="site-word-church.png" width="1200" height="750" alt="The Word Church LA homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
           <span class="live">Live</span>
         </div>
         <div class="card-body">
           <p class="card-type">Church website</p>
           <h3>The Word Church LA</h3>
           <p class="where">Los Angeles, California</p>
-          <p class="desc">A bold black-and-white design with visiting, watching and giving one tap from the header.</p>
+          <p class="desc">A bold black-and-white design with a photo grid of the real congregation and visiting, watching and giving one tap from the header.</p>
           <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
           <a class="visit" href="https://wordchurchla.com/" target="_blank" rel="noopener">Visit live site<svg aria-hidden="true"><use href="#out"/></svg></a>
         </div>
@@ -370,42 +385,119 @@ html.loading{overflow:hidden}
       <article class="card" data-category="church">
         <div class="shot">
           <div class="shot-bar"><i></i><i></i><i></i><em>thebridgenoco.com</em></div>
-          <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fthebridgenoco.com%2F?w=900&h=563" width="900" height="563" alt="The Bridge North County homepage" loading="lazy">
+          <div class="shot-img"><img src="site-bridge-noco.png" width="1200" height="750" alt="The Bridge North County homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
           <span class="live">Live</span>
         </div>
         <div class="card-body">
           <p class="card-type">Church website</p>
           <h3>The Bridge North County</h3>
           <p class="where">Ferguson, Missouri</p>
-          <p class="desc">A warm, photo-led homepage with plan-your-visit and watch-online buttons right in the hero.</p>
+          <p class="desc">A worship-led hero with plan-your-visit and watch-online buttons, plus quick links to beliefs, visiting and staff.</p>
           <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
           <a class="visit" href="https://thebridgenoco.com/" target="_blank" rel="noopener">Visit live site<svg aria-hidden="true"><use href="#out"/></svg></a>
         </div>
       </article>
 
       <article class="card" data-category="church">
-        <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><em>City of Light Church</em></div><div class="shot-blank" aria-hidden="true">CL</div></div>
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>Reach City Church</em></div>
+          <div class="shot-img"><img src="site-reach-city.png" width="1200" height="750" alt="Reach City Church homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
         <div class="card-body">
-          <p class="card-type">Church website</p>
-          <h3>City of Light Church</h3>
-          <p class="where">Growing congregation</p>
-          <p class="desc">A cinematic video hero with a full next-steps menu, kept fast on phones.</p>
+          <p class="card-type">Church website with online campus</p>
+          <h3>Reach City Church</h3>
+          <p class="where">In-person and online congregation</p>
+          <p class="desc">A vibrant homepage with a four-part mission statement, a church-online panel and tiled quick links for connecting, giving and kids.</p>
           <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
         </div>
       </article>
 
       <article class="card" data-category="church">
-        <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><em>United Christian Fellowship</em></div><div class="shot-blank" aria-hidden="true">UC</div></div>
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>City of Light Church</em></div>
+          <div class="shot-img"><img src="site-city-of-light.png" width="1200" height="750" alt="City of Light Church homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
         <div class="card-body">
           <p class="card-type">Church website</p>
-          <h3>United Christian Fellowship</h3>
-          <p class="where">Fellowship church</p>
-          <p class="desc">A calm, minimal homepage with a full-screen welcome and two clear next steps.</p>
+          <h3>City of Light Church</h3>
+          <p class="where">Multi-ethnic congregation</p>
+          <p class="desc">A cinematic hero with outlined display type, a virtual tour button and a newsletter signup, kept fast on phones.</p>
           <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
         </div>
       </article>
 
+      <article class="card" data-category="church">
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>Gospel Nation Christian Fellowship</em></div>
+          <div class="shot-img"><img src="site-gospel-nation.png" width="1200" height="750" alt="Gospel Nation Christian Fellowship homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
+        <div class="card-body">
+          <p class="card-type">Church website</p>
+          <h3>Gospel Nation Christian Fellowship</h3>
+          <p class="where">Sunday services and online worship</p>
+          <p class="desc">A sanctuary-photo hero with service times, a live countdown to the next service, and watch-online and plan-your-visit buttons.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span><span class="tag">Countdown</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-category="church">
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>Agape Global Ministries</em></div>
+          <div class="shot-img"><img src="site-agape.png" width="1200" height="750" alt="Agape Global Ministries homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
+        <div class="card-body">
+          <p class="card-type">Ministry website</p>
+          <h3>Agape Global Ministries</h3>
+          <p class="where">Multicultural, non-denominational ministry</p>
+          <p class="desc">A city-skyline hero in the ministry's purple and gold, with sermons and giving as the two main actions.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-category="church">
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>New Willow Grove Baptist Church</em></div>
+          <div class="shot-img"><img src="site-willow-grove.png" width="1200" height="750" alt="New Willow Grove Baptist Church homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
+        <div class="card-body">
+          <p class="card-type">Church website</p>
+          <h3>New Willow Grove Baptist Church</h3>
+          <p class="where">Baptist church</p>
+          <p class="desc">A deep-blue hero with a layered photo collage of the community and a single clear action: plan your visit.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-category="church">
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>A House of Presence, Power and Purpose</em></div>
+          <div class="shot-img"><img src="site-presence-power.png" width="1200" height="750" alt="A House of Presence, Power and Purpose church homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
+        <div class="card-body">
+          <p class="card-type">Church website</p>
+          <!-- Replace this title with the church's real name -->
+          <h3>A House of Presence, Power and Purpose</h3>
+          <p class="where">Church website</p>
+          <p class="desc">A dark, photo-driven homepage with a three-pillar section: encounter God, empower the nations, equip disciples.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
+        </div>
+      </article>
+
+      <article class="card" data-category="church">
+        <div class="shot">
+          <div class="shot-bar"><i></i><i></i><i></i><em>United Christian Fellowship</em></div>
+          <div class="shot-img"><img src="site-united-christian.png" width="1200" height="750" alt="United Christian Fellowship homepage" loading="lazy" onerror="this.style.visibility='hidden'"></div>
+        </div>
+        <div class="card-body">
+          <p class="card-type">Church website</p>
+          <h3>United Christian Fellowship</h3>
+          <p class="where">Fellowship church</p>
+          <p class="desc">A calm, full-screen welcome with a cross-and-clouds backdrop and two clear next steps: give and watch the service.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
+        </div>
+      </article>
     </div>
+
     <p class="empty" id="empty">No projects in this category yet.</p>
   </div>
 </section>
@@ -442,7 +534,14 @@ html.loading{overflow:hidden}
 <script>
 (function(){
   var toggle=document.querySelector('.nav-toggle'),nav=document.getElementById('main-nav');
-  toggle.addEventListener('click',function(){var o=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',o);toggle.textContent=o?'Close':'Menu';});
+  function setNav(o){nav.classList.toggle('open',o);toggle.setAttribute('aria-expanded',o);toggle.textContent=o?'Close':'Menu';}
+  toggle.addEventListener('click',function(){setNav(!nav.classList.contains('open'));});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setNav(false);});
+  document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target)&&!toggle.contains(e.target))setNav(false);});
+
+  var header=document.querySelector('.site-header');
+  function onScroll(){header.classList.toggle('scrolled',window.scrollY>8);}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
   var cards=[].slice.call(document.querySelectorAll('.card'));
   var groups=[].slice.call(document.querySelectorAll('.group-title'));
