@@ -12,6 +12,7 @@
 <meta property="og:title" content="Quiet Studio | We stay quiet. Your phone doesn't.">
 <meta property="og:description" content="Websites, local SEO, Google Business Profile and AI lead follow-up for roofers and home service companies.">
 <meta property="og:url" content="https://aldrin-portfolio-home.vercel.app/">
+<meta property="og:image" content="https://aldrin-portfolio-home.vercel.app/site-holden.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F3A2F'/%3E%3Cpath d='M16 26V12' stroke='%23F5B83D' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M16 13c0-4 2.5-6.5 6-7-0.3 4-2.6 6.6-6 7z' fill='%23F5B83D'/%3E%3Cpath d='M16 19c-1-3.4-3.6-5.2-7-5 0.8 3.4 3.5 5.2 7 5z' fill='%23F5B83D'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +33,7 @@
   "email":"ajmdapetilla.06@gmail.com",
   "telephone":"+63 960 519 7762",
   "areaServed":"US",
-  "founder":{"@type":"Person","name":"Aldrin John Dapetilla","jobTitle":"Founder","image":"https://aldrin-portfolio-home.vercel.app/aldrin.jpg","sameAs":["https://www.linkedin.com/in/aldrin-john-dapetilla-182838331/"]},
+  "founder":{"@type":"Person","name":"Aldrin John Dapetilla","jobTitle":"Founder","image":"https://aldrin-portfolio-home.vercel.app/aldrin-headshot.png","sameAs":["https://www.linkedin.com/in/aldrin-john-dapetilla-182838331/"]},
   "sameAs":["https://www.linkedin.com/in/aldrin-john-dapetilla-182838331/","https://www.facebook.com/badjan06"],
   "hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[
     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Website design for contractors"}},
@@ -233,9 +234,9 @@ h3{font-size:1.5rem;line-height:1.12}
 
 .about{padding:104px 0;background:var(--white);border-top:1px solid var(--line)}
 .about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:64px;align-items:center}
-.portrait{position:relative;aspect-ratio:1/1;border-radius:var(--r-l);overflow:hidden;background:linear-gradient(160deg,var(--moss),var(--forest));box-shadow:0 30px 60px -28px rgba(20,33,28,.45)}
-.portrait img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:50% 22%;transform:scale(1.35);transform-origin:50% 22%}
-.portrait .initials{position:absolute;inset:0;display:grid;place-items:center;color:var(--amber);font-stretch:70%;font-weight:800;font-size:6rem}
+.portrait{position:relative;aspect-ratio:1/1;border-radius:var(--r-l);overflow:hidden;background:#fff;box-shadow:0 30px 60px -28px rgba(20,33,28,.45),0 0 0 1px var(--line)}
+.portrait img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.portrait .initials{position:absolute;inset:0;display:grid;place-items:center;color:var(--amber);background:linear-gradient(160deg,var(--moss),var(--forest));font-stretch:70%;font-weight:800;font-size:6rem}
 .about-copy p{margin-top:18px;font-size:1.1rem;max-width:36em}
 .about-copy .sign{margin-top:22px;font-weight:700;color:var(--forest)}
 .facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:40px;margin-top:32px}
@@ -283,7 +284,6 @@ h3{font-size:1.5rem;line-height:1.12}
 
 .mobile-cta{display:none}
 
-/* Loading screen */
 .loader{position:fixed;inset:0;z-index:999;background:var(--night);display:grid;place-items:center;cursor:pointer;transition:opacity .6s ease,visibility .6s ease}
 .loader::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 50% 40%,rgba(62,107,85,.45),transparent 70%);pointer-events:none}
 .loader.done{opacity:0;visibility:hidden}
@@ -315,7 +315,7 @@ html.loading .ping{animation-play-state:paused}
   body{font-size:16px}
   .header-row{height:72px}
   .brand img{height:48px}
-  .main-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--night);flex-direction:column;align-items:flex-start;gap:20px;padding:22px 24px 30px;border-bottom:1px solid rgba(234,240,236,.1)}
+  .main-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--night);flex-direction:column;align-items:flex-start;gap:12px;padding:20px 24px 28px;border-bottom:1px solid rgba(234,240,236,.1)}
   .main-nav.open{display:flex}
   .nav-toggle{display:inline-block}
   .hero{padding-top:44px}
@@ -345,11 +345,27 @@ html.loading .ping{animation-play-state:paused}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* ===== Polish layer ===== */
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+::selection{background:#F5B83D;color:#14211C}
+section[id],article[id]{scroll-margin-top:100px}
+.btn{min-height:48px}
+.site-header{transition:box-shadow .25s ease,background-color .25s ease}
+.site-header.scrolled{box-shadow:0 12px 32px -20px rgba(0,0,0,.45)}
+.main-nav a:not(.btn){position:relative}
+.main-nav a.is-active:not(.btn),.main-nav a[aria-current="page"]:not(.btn){color:var(--on-dark,var(--ink))}
+.main-nav a.is-active:not(.btn)::after,.main-nav a[aria-current="page"]:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:#F5B83D}
+@media (max-width:760px){
+  .main-nav a:not(.btn){display:block;width:100%;padding:10px 0;font-size:1.05rem}
+  .main-nav a.is-active:not(.btn)::after,.main-nav a[aria-current="page"]:not(.btn)::after{bottom:4px;right:auto;width:28px}
+  .main-nav .btn{width:100%}
+}
 </style>
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-inner">
     <img class="loader-logo" src="quiet-studio-logo-white.png" alt="" width="1170" height="460" onerror="this.style.display='none';this.nextElementSibling.hidden=false">
@@ -360,8 +376,8 @@ html.loading .ping{animation-play-state:paused}
 </div>
 <script>
 (function(){
-  var DURATION = 3000;          // loading time in milliseconds (3000 = 3 seconds)
-  var SHOW_EVERY_PAGE = false;  // true = show on every page load, false = once per visit
+  var DURATION = 3000;
+  var SHOW_EVERY_PAGE = false;
   var loader = document.getElementById('loader');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var seen = false;
@@ -436,7 +452,7 @@ html.loading .ping{animation-play-state:paused}
     <div class="stage">
       <div class="browser browser-main">
         <div class="browser-bar"><span></span><span></span><span></span><em>holdenroofing.com/locations/austin</em></div>
-        <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fholdenroofing.com%2Flocations%2Faustin%2F?w=1200&h=750" width="1200" height="750" alt="Holden Roofing Austin location page" fetchpriority="high">
+        <img src="site-holden.png" width="1200" height="750" alt="Holden Roofing Austin location page" fetchpriority="high" onerror="this.style.visibility='hidden'">
       </div>
       <div class="phone-frame">
         <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwisebuildersrnr.com%2F?w=390&h=820&vpw=390&vph=820" width="390" height="820" alt="Wise Builders website on a phone">
@@ -547,7 +563,7 @@ html.loading .ping{animation-play-state:paused}
       <div class="case-shot">
         <div class="browser">
           <div class="browser-bar"><span></span><span></span><span></span><em>holdenroofing.com/locations/austin</em></div>
-          <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fholdenroofing.com%2Flocations%2Faustin%2F?w=1200&h=750" width="1200" height="750" alt="Holden Roofing Austin location page" loading="lazy">
+          <img src="site-holden.png" width="1200" height="750" alt="Holden Roofing Austin location page" loading="lazy" onerror="this.style.visibility='hidden'">
         </div>
       </div>
       <div class="case-copy">
@@ -595,7 +611,7 @@ html.loading .ping{animation-play-state:paused}
       <div class="case-shot">
         <div class="browser">
           <div class="browser-bar"><span></span><span></span><span></span><em>wisebuildersrnr.com</em></div>
-          <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fwisebuildersrnr.com%2F?w=1200&h=750" width="1200" height="750" alt="Wise Builders Roofing and Renovations homepage" loading="lazy">
+          <img src="site-wise-builders.png" width="1200" height="750" alt="Wise Builders Roofing and Renovations homepage" loading="lazy" onerror="this.style.visibility='hidden'">
         </div>
       </div>
       <div class="case-copy">
@@ -784,7 +800,7 @@ html.loading .ping{animation-play-state:paused}
   <div class="wrap about-grid">
     <div class="portrait">
       <span class="initials" aria-hidden="true">AJ</span>
-      <img src="aldrin.jpg" alt="Aldrin John Dapetilla, founder of Quiet Studio" width="760" height="760" loading="lazy" onerror="this.remove()">
+      <img src="aldrin-headshot.png" alt="Aldrin John Dapetilla, founder of Quiet Studio" width="430" height="430" loading="lazy" onerror="this.remove()">
     </div>
     <div class="about-copy">
       <h2 id="about-title">You'll talk to the person doing the work</h2>
@@ -888,6 +904,26 @@ html.loading .ping{animation-play-state:paused}
   function setNav(open){nav.classList.toggle('open',open);toggle.setAttribute('aria-expanded',open);toggle.textContent=open?'Close':'Menu';}
   toggle.addEventListener('click',function(){setNav(!nav.classList.contains('open'));});
   nav.addEventListener('click',function(e){if(e.target.tagName==='A')setNav(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setNav(false);});
+  document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target)&&!toggle.contains(e.target))setNav(false);});
+
+  var header=document.querySelector('.site-header');
+  function onScroll(){header.classList.toggle('scrolled',window.scrollY>8);}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  var links=[].slice.call(document.querySelectorAll('.main-nav a[href^="#"]:not(.btn)')),map={};
+  links.forEach(function(a){var s=document.getElementById(a.getAttribute('href').slice(1));if(s)map[s.id]=a;});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(l){l.classList.remove('is-active');l.removeAttribute('aria-current');});
+          map[en.target.id].classList.add('is-active');map[en.target.id].setAttribute('aria-current','true');
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(map).forEach(function(id){io.observe(document.getElementById(id));});
+  }
 
   var tabs=[].slice.call(document.querySelectorAll('.price-switch [role="tab"]'));
   function pick(tab){
