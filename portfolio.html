@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://s0.wp.com">
+<link rel="preload" as="image" href="quiet-studio-logo-white.png">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
 
 <style>
@@ -46,9 +47,9 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 .btn-line-light:hover{border-color:var(--on-dark);background:rgba(234,240,236,.08)}
 
 .site-header{position:sticky;top:0;z-index:100;background:rgba(15,27,23,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(234,240,236,.08);color:var(--on-dark)}
-.header-row{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.header-row{display:flex;align-items:center;justify-content:space-between;height:84px;gap:20px}
 .brand{display:flex;align-items:center;text-decoration:none;font-weight:780;font-stretch:80%;font-size:1.35rem;color:var(--white)}
-.brand img{height:46px;width:auto}
+.brand img{height:60px;width:auto}
 .main-nav{display:flex;align-items:center;gap:30px}
 .main-nav a{text-decoration:none;font-weight:560;font-size:.97rem;color:var(--on-dark-muted)}
 .main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--on-dark)}
@@ -108,9 +109,26 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 
 .site-footer{background:var(--night);color:var(--on-dark-muted);border-top:1px solid rgba(234,240,236,.08);padding:32px 0;font-size:.9rem}
 .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-brand{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-brand img{height:52px;width:auto;opacity:.9}
 .footer-row nav{display:flex;gap:22px;flex-wrap:wrap}
 .footer-row a{text-decoration:none}
 .footer-row a:hover{color:var(--on-dark);text-decoration:underline}
+
+/* Loading screen */
+.loader{position:fixed;inset:0;z-index:999;background:var(--night);display:grid;place-items:center;cursor:pointer;transition:opacity .6s ease,visibility .6s ease}
+.loader::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 50% 40%,rgba(62,107,85,.45),transparent 70%);pointer-events:none}
+.loader.done{opacity:0;visibility:hidden}
+.loader-inner{position:relative;display:grid;justify-items:center;gap:20px;text-align:center;padding:24px}
+.loader-logo{height:120px;width:auto;opacity:0;transform:scale(.94);animation:qsLogo .9s cubic-bezier(.2,.8,.2,1) .15s forwards}
+.loader-name{font-stretch:75%;font-weight:780;font-size:2.8rem;line-height:1;color:#fff;opacity:0;animation:qsLogo .9s ease .15s forwards}
+.loader-tag{color:var(--on-dark-muted);font-size:1rem;opacity:0;transform:translateY(10px);animation:qsRise .6s ease .9s forwards}
+.loader-bar{width:200px;height:3px;border-radius:3px;background:rgba(234,240,236,.12);overflow:hidden}
+.loader-bar span{display:block;height:100%;background:var(--amber);transform:scaleX(0);transform-origin:left;animation:qsFill var(--dur,3000ms) linear forwards}
+@keyframes qsLogo{to{opacity:1;transform:none}}
+@keyframes qsRise{to{opacity:1;transform:none}}
+@keyframes qsFill{to{transform:scaleX(1)}}
+html.loading{overflow:hidden}
 
 @media (max-width:1080px){
   .grid{grid-template-columns:1fr 1fr}
@@ -119,18 +137,54 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 }
 @media (max-width:760px){
   body{font-size:16px}
-  .brand img{height:38px}
-  .main-nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--night);flex-direction:column;align-items:flex-start;gap:20px;padding:22px 24px 30px;border-bottom:1px solid rgba(234,240,236,.1)}
+  .header-row{height:72px}
+  .brand img{height:48px}
+  .main-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--night);flex-direction:column;align-items:flex-start;gap:20px;padding:22px 24px 30px;border-bottom:1px solid rgba(234,240,236,.1)}
   .main-nav.open{display:flex}
   .nav-toggle{display:inline-block}
   .intro{padding-top:52px}
   .grid{grid-template-columns:1fr}
   .counts{gap:28px}
+  .loader-logo{height:90px}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <img class="loader-logo" src="quiet-studio-logo-white.png" alt="" width="1170" height="460" onerror="this.style.display='none';this.nextElementSibling.hidden=false">
+    <p class="loader-name" hidden>Quiet Studio</p>
+    <p class="loader-tag">We stay quiet. Your phone doesn't.</p>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div>
+<script>
+(function(){
+  var DURATION = 3000;          // loading time in milliseconds (3000 = 3 seconds)
+  var SHOW_EVERY_PAGE = false;  // true = show on every page load, false = once per visit
+  var loader = document.getElementById('loader');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seen = false;
+  try { seen = sessionStorage.getItem('qs-loaded') === '1'; } catch(e) {}
+  if (reduce || (seen && !SHOW_EVERY_PAGE)) { loader.remove(); return; }
+  document.documentElement.classList.add('loading');
+  loader.style.setProperty('--dur', DURATION + 'ms');
+  var hidden = false;
+  function hide(){
+    if (hidden) return; hidden = true;
+    loader.classList.add('done');
+    document.documentElement.classList.remove('loading');
+    try { sessionStorage.setItem('qs-loaded', '1'); } catch(e) {}
+    setTimeout(function(){ loader.remove(); }, 700);
+  }
+  setTimeout(hide, DURATION);
+  loader.addEventListener('click', hide);
+})();
+</script>
+
 <a class="skip" href="#projects">Skip to projects</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -140,7 +194,7 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 <header class="site-header">
   <div class="wrap header-row">
     <a class="brand" href="index.html">
-      <img src="quiet-studio-logo-white.png" alt="Quiet Studio" width="900" height="460" onerror="this.replaceWith(document.createTextNode('Quiet Studio'))">
+      <img src="quiet-studio-logo-white.png" alt="Quiet Studio" width="1170" height="460" onerror="this.replaceWith(document.createTextNode('Quiet Studio'))">
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
     <nav class="main-nav" id="main-nav" aria-label="Main">
@@ -175,8 +229,6 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 
 <section class="projects" id="projects" aria-label="Projects">
   <div class="wrap">
-
-    <!-- To add a project, copy any <article class="card"> block and edit it. -->
 
     <div class="group-title"><h2>Roofing and contractors</h2><span>Built to turn searches into inspection requests</span></div>
     <div class="grid">
@@ -374,7 +426,10 @@ h2{font-size:clamp(2rem,4vw,3.2rem)}
 
 <footer class="site-footer">
   <div class="wrap footer-row">
-    <span>&copy; <span id="year">2026</span> Quiet Studio. We stay quiet. Your phone doesn't.</span>
+    <div class="footer-brand">
+      <img src="quiet-studio-logo-white.png" alt="Quiet Studio" width="1170" height="460" onerror="this.remove()">
+      <span>&copy; <span id="year">2026</span> Quiet Studio. We stay quiet. Your phone doesn't.</span>
+    </div>
     <nav aria-label="Footer">
       <a href="index.html">Home</a>
       <a href="mailto:ajmdapetilla.06@gmail.com">Email</a>
