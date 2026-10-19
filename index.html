@@ -625,10 +625,21 @@ tabs.forEach(function(tab,i){tab.addEventListener('click',function(){pick(tab);}
 document.querySelectorAll('img[src*="mshots"]').forEach(function(img){img.addEventListener('load',function(){if(img.naturalWidth===400&&!img.dataset.retried){img.dataset.retried='1';setTimeout(function(){img.src=img.src+'&r=1';},3000);}});});
 var ba=document.getElementById('results');document.querySelectorAll('.ba-img').forEach(function(img){img.addEventListener('error',function(){ba.hidden=true;});});
 document.querySelectorAll('.ba-range').forEach(function(r){r.addEventListener('input',function(){r.parentElement.style.setProperty('--pos',r.value+'%');});});
+/* FORM SETUP: replace the id after /f/ with your own Formspree form id (formspree.io, free). */
+var FORM_ENDPOINT='https://formspree.io/f/mvkzqbbk';
 var form=document.getElementById('audit-form'),status=document.getElementById('form-status');
+form.action=FORM_ENDPOINT;
+function leadText(){var g=function(n){var el=form.elements[n];return el?el.value.trim():'';};return 'Free audit request\nName: '+g('name')+'\nCompany: '+g('company')+'\nWebsite: '+g('website')+'\nEmail: '+g('email')+'\nBiggest problem: '+g('problem');}
+function showFallback(){var t=leadText();status.style.color='var(--err)';status.innerHTML='';
+var p=document.createElement('span');p.textContent='The form could not send right now. Send the same details in one tap instead: ';status.appendChild(p);
+var wa=document.createElement('a');wa.href='https://wa.me/639605197762?text='+encodeURIComponent(t);wa.target='_blank';wa.rel='noopener';wa.textContent='WhatsApp';wa.style.cssText='color:inherit;font-weight:700;text-decoration:underline';
+var or=document.createTextNode(' or ');
+var em=document.createElement('a');em.href='mailto:ajmdapetilla.06@gmail.com?subject='+encodeURIComponent('Free website audit')+'&body='+encodeURIComponent(t);em.textContent='Email';em.style.cssText='color:inherit;font-weight:700;text-decoration:underline';
+status.appendChild(wa);status.appendChild(or);status.appendChild(em);}
 form.addEventListener('submit',function(e){e.preventDefault();if(!form.checkValidity()){var bad=form.querySelector(':invalid');status.style.color='var(--err)';status.textContent=bad.type==='url'?'Add your full website address, starting with https://':bad.type==='email'?'Add a valid email so we can send your audit.':'Fill in every field to send your request.';bad.focus();return;}
 var btn=form.querySelector('button[type="submit"]');btn.disabled=true;btn.textContent='Sending...';status.textContent='';
-fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}}).then(function(r){if(!r.ok)throw new Error();form.reset();status.style.color='var(--ok)';status.textContent='Thanks! Your request is in. Expect your audit video within 48 hours.';btn.textContent='Request sent';}).catch(function(){status.style.color='var(--err)';status.textContent='Something went wrong sending your request. Please message us on WhatsApp at +63 960 519 7762.';btn.disabled=false;btn.textContent='Send my audit request';});});
+var ctrl=('AbortController' in window)?new AbortController():null,timer=ctrl&&setTimeout(function(){ctrl.abort();},12000);
+fetch(FORM_ENDPOINT,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'},signal:ctrl?ctrl.signal:undefined}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json().catch(function(){return{};});}).then(function(){if(timer)clearTimeout(timer);form.reset();status.style.color='var(--ok)';status.textContent='Thanks! Your request is in. Expect your audit video within 48 hours.';btn.textContent='Request sent';}).catch(function(){if(timer)clearTimeout(timer);showFallback();btn.disabled=false;btn.textContent='Send my audit request';});});
 document.getElementById('year').textContent=new Date().getFullYear();
 })();
 </script>
